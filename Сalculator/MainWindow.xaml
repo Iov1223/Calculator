@@ -22,14 +22,47 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}">
-                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightGray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Button"  x:Key="Equally">
+            <Setter Property="Background" Value="SteelBlue"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="4" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DodgerBlue"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </Window.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -45,16 +78,17 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="Screen" Text="0" Grid.Row="0" Grid.ColumnSpan="4" FontSize="40"/>
+        <TextBlock x:Name="Screen" Text="0"  TextAlignment="Right"
+                   Grid.Row="0" Grid.ColumnSpan="4" FontSize="40" Margin="2,50,2,10"/>
 
         <Grid Grid.Row="1" Grid.Column="0">
             <Button x:Name="One" Content="1" Click="One_Click_1"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
-            <Button x:Name="Two" Content="2"/>
+            <Button x:Name="Two" Content="2" Click="Two_Click"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="2">
-            <Button x:Name="Three" Content="3"/>
+            <Button x:Name="Three" Content="3" Click="Three_Click"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="3">
             <Grid.RowDefinitions>
@@ -62,21 +96,21 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <Button x:Name="C" Content="C"/>
+                <Button x:Name="C" Content="C" Height="49" Margin="2,2,2,0" VerticalAlignment="Top" Click="C_Click"/>
             </Grid>
             <Grid Grid.Row="1">
-                <Button x:Name="X" Content="x"/>
+                <Button x:Name="X" Content="x" Click="X_Click"/>
             </Grid>
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="0">
-            <Button x:Name="Four" Content="4"/>
+            <Button x:Name="Four" Content="4" Click="Four_Click"/>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1">
-            <Button x:Name="Five" Content="5"/>
+            <Button x:Name="Five" Content="5" Click="Five_Click"/>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2">
-            <Button x:Name="Six" Content="6"/>
+            <Button x:Name="Six" Content="6" Click="Six_Click"/>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="3">
             <Grid.RowDefinitions>
@@ -84,21 +118,21 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <Button x:Name="Divide" Content="/"/>
+                <Button x:Name="Divide" Content="/" Click="Divide_Click"/>
             </Grid>
             <Grid Grid.Row="1">
-                <Button x:Name="Multiply" Content="*"/>
+                <Button x:Name="Multiply" Content="*" Click="Multiply_Click"/>
             </Grid>
         </Grid>
 
         <Grid Grid.Row="3" Grid.Column="0">
-            <Button x:Name="Seven" Content="7"/>
+            <Button x:Name="Seven" Content="7" Click="Seven_Click"/>
         </Grid>
         <Grid Grid.Row="3" Grid.Column="1">
-            <Button x:Name="Eight" Content="8"/>
+            <Button x:Name="Eight" Content="8" Click="Eight_Click"/>
         </Grid>
         <Grid Grid.Row="3" Grid.Column="2">
-            <Button x:Name="Nine" Content="9"/>
+            <Button x:Name="Nine" Content="9" Click="Nine_Click"/>
         </Grid>
         <Grid Grid.Row="3" Grid.Column="3">
             <Grid.RowDefinitions>
@@ -106,10 +140,10 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <Button x:Name="Minus" Content="-"/>
+                <Button x:Name="Minus" Content="-" Click="Minus_Click"/>
             </Grid>
             <Grid Grid.Row="1">
-                <Button x:Name="Plus" Content="+"/>
+                <Button x:Name="Plus" Content="+" Click="Plus_Click"/>
             </Grid>
         </Grid>
 
@@ -118,16 +152,16 @@
         </Grid>
 
         <Grid Grid.Row="4" Grid.Column="1">
-            <Button x:Name="Zero" Content="0"/>
+            <Button x:Name="Zero" Content="0" Click="Zero_Click"/>
         </Grid>
 
         <Grid Grid.Row="4" Grid.Column="2">
-            <Button x:Name="Dot" Content="."/>
+            <Button x:Name="Dot" Content="." Click="Dot_Click"/>
         </Grid>
 
         <Grid Grid.Row="4" Grid.Column="3">
-            <Button x:Name="Equally" Background="SteelBlue" Foreground="White" Content="="/>
+            <Button x:Name="Equally" Content="=" Style="{StaticResource Equally}" Click="Equally_Click"/>
         </Grid>
-        
+
     </Grid>
 </Window>
